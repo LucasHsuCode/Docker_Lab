@@ -1,4 +1,44 @@
 
+# Installing Docker on Ubuntu 20.04
+Here are the steps to install Docker on Ubuntu 20.04:
+
+1. Update APT package index:
+```
+sudo apt update
+```
+2. Install necessary dependencies:
+```
+sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
+```
+3. Add Docker's GPG key:
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+4. Add Docker's APT repository:
+```
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+5. Update APT package index:
+```
+sudo apt update
+```
+6. Install Docker:
+```
+sudo apt install docker-ce docker-ce-cli containerd.io
+```
+7. Start Docker service:
+```
+sudo systemctl start docker
+```
+8. Verify that Docker is running correctly:
+```
+sudo docker run hello-world
+```
+If Docker is running correctly, you should see a message that says "Hello from Docker!". This indicates that Docker has been installed successfully.
+
+Note that when using Docker, you need to run relevant commands as root or a user with sudo privileges.
+
+***
 在 Ubuntu 20.04 上安裝 Docker 可以遵循以下步驟：
 1. 更新 APT 包索引：
 ```
@@ -37,37 +77,3 @@ sudo docker run hello-world
 需要注意的是，在使用 Docker 時，需要以 root 或者擁有 sudo 權限的用戶身份運行相關命令。
 ***
 
-Here are the steps to install Docker on Ubuntu 20.04:
-
-1. Update APT package index:
-```
-sudo apt update
-```
-2. Install necessary dependencies:
-```
-sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
-```
-3. Add Docker's GPG key:
-```
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-```
-4. Add Docker's APT repository:
-```
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-5. Update APT package index:
-```
-sudo apt update
-```
-6. Install Docker:
-```
-sudo apt install docker-ce docker-ce-cli containerd.io
-```
-7. Start Docker service:
-```
-sudo systemctl start docker
-```
-8. Verify that Docker is running correctly:
-```
-sudo docker run hello-world
-```
